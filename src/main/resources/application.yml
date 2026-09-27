@@ -6,6 +6,8 @@ spring:
     name: evops-base
   profiles:
     active: dev
+  aop:
+    proxy-target-class: true
   jackson:
     time-zone: Asia/Shanghai
     serialization:
