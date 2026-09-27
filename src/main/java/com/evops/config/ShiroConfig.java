@@ -20,6 +20,9 @@ public class ShiroConfig {
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chain = new DefaultShiroFilterChainDefinition();
         chain.addPathDefinition("/api/health", "anon");
+        // F1 业务接口暂不接入登录鉴权，由 X-Operator 请求头记录操作人
+        chain.addPathDefinition("/api/lens/**", "anon");
+        chain.addPathDefinition("/api/orders/**", "anon");
         chain.addPathDefinition("/error", "anon");
         chain.addPathDefinition("/**", "authc");
         return chain;

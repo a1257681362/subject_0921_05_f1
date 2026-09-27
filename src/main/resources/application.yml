@@ -6,6 +6,10 @@ spring:
     name: evops-base
   profiles:
     active: dev
+  autoconfigure:
+    # 项目走 Shiro URL 过滤链，不使用 @RequiresPermissions 等方法注解；
+    # 该自动配置注册的 DefaultAdvisorAutoProxyCreator 默认 JDK 代理，会与按具体类注入冲突
+    exclude: org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration
   jackson:
     time-zone: Asia/Shanghai
     serialization:
